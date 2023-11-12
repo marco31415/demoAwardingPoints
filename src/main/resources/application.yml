@@ -1,0 +1,7 @@
+monthsToSearch: 3
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: info, health, metrics, threaddump, prometheus
