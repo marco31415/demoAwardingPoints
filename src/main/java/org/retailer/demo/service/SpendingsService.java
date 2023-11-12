@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringJoiner;
 
 @Slf4j
 @Service
@@ -52,7 +53,9 @@ public class SpendingsService {
 //                    for each month we create a new AwardingPoints object
                     pointsByMonth.getAwardedPoints().add(
                             new AwardingPoints(
-                                    fromDate,
+                                    new StringJoiner(" / ")
+                                            .add(fromDate.toString())
+                                            .add(fromDate.plusMonths(1).minusDays(1).toString()).toString(),
                                     spendingsRepository.findAllByCustomerIdAndDateBetween(
                                                     customer.getId(),
                                                     fromDate, fromDate.plusMonths(1).minusDays(1))

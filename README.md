@@ -92,42 +92,42 @@ curl --location 'http://localhost:8080/rewardingPoints/v1?fromDate=2023-01-01'
 ### Response
 ```
 [
-    {
-        "customerName": "John Doe",
-        "awardedPoints": [
-            {
-                "date": "2023-01-01",
-                "points": 30
-            },
-            {
-                "date": "2023-02-01",
-                "points": 100
-            },
-            {
-                "date": "2023-03-01",
-                "points": 280
-            }
-        ],
-        "totalPoints": 410
-    },
-    {
-        "customerName": "Jane Doe",
-        "awardedPoints": [
-            {
-                "date": "2023-01-01",
-                "points": 70
-            },
-            {
-                "date": "2023-02-01",
-                "points": 960
-            },
-            {
-                "date": "2023-03-01",
-                "points": 1260
-            }
-        ],
-        "totalPoints": 2290
-    }
+  {
+    "customerName": "John Doe",
+    "awardedPoints": [
+      {
+        "date": "2023-01-01 / 2023-01-31",
+        "points": 30
+      },
+      {
+        "date": "2023-02-01 / 2023-02-28",
+        "points": 100
+      },
+      {
+        "date": "2023-03-01 / 2023-03-31",
+        "points": 280
+      }
+    ],
+    "totalPoints": 410
+  },
+  {
+    "customerName": "Jane Doe",
+    "awardedPoints": [
+      {
+        "date": "2023-01-01 / 2023-01-31",
+        "points": 70
+      },
+      {
+        "date": "2023-02-01 / 2023-02-28",
+        "points": 960
+      },
+      {
+        "date": "2023-03-01 / 2023-03-31",
+        "points": 1260
+      }
+    ],
+    "totalPoints": 2290
+  }
 ]
 ```
 
