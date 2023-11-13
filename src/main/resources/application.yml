@@ -1,5 +1,6 @@
 monthsToSearch: 3
 
+#actuator exposed end point
 management:
   endpoints:
     web:

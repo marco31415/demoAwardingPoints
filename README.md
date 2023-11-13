@@ -69,7 +69,17 @@ docker run -p 8080:8080 myorg/myapp
 
 # How to run unit test?
 ---------------------
+### mvn test
 In the root project folder, run "mvn clean test". This will run all the unit tests.
+
+### Surefire Report
+You can execute the next command to generate the surefire report.
+```
+mvn surefire-report:report
+```
+You can find the surefire report in the target folder ${basedir}/target/site/surefire-report.html. The report is in HTML format and can be viewed in any browser:
+
+![img.png](src/main/resources/images/surefire_report.png)
 
 # How to monitor the application?
 -------------------------------
@@ -129,6 +139,26 @@ curl --location 'http://localhost:8080/rewardingPoints/v1?fromDate=2023-01-01'
     "totalPoints": 2290
   }
 ]
+```
+### You can access the Swagger UI to try the API at the following URL
+```
+http://localhost:8080/swagger-ui/index.html
+```
+Request:
+![swagger_request.png](src/main/resources/images/swagger_request.png)
+Response:
+![swagger_response.png](src/main/resources/images/swagger_response.png)
+
+### The OpenAPI description will be available at the following URL in JSON format
+```
+http://localhost:8080/v3/api-docs
+```
+
+![api_docs_json.png](src/main/resources/images/api_docs_json.png)
+
+### Or in YAML format
+```
+http://localhost:8080/v3/api-docs.yaml
 ```
 
 # Example dataset
