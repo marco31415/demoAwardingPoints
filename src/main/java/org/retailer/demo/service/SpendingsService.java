@@ -1,6 +1,7 @@
 package org.retailer.demo.service;
 
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.collections4.CollectionUtils;
 import org.retailer.demo.domain.dto.AwardingPoints;
 import org.retailer.demo.domain.dto.PointsByMonth;
 import org.retailer.demo.domain.entity.Customer;
@@ -41,7 +42,7 @@ public class SpendingsService {
 
         try {
 //            iterate over existing customers
-            for (Customer customer : customerRepository.findAll()) {
+            for (Customer customer : CollectionUtils.emptyIfNull(customerRepository.findAll())) {
 
                 int idxMonth = 0;
                 LocalDate fromDate = date;

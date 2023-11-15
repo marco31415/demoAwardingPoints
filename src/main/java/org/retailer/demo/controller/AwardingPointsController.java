@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
 
 @Slf4j
 @RestController
@@ -35,13 +36,16 @@ public class AwardingPointsController {
             @RequestParam(name = "fromDate", required = true)
             @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
             LocalDate fromDate) {
+        if (Objects.isNull(fromDate)) {
+            throw new AwardingPointsException("Required request parameter 'fromDate' for method parameter type LocalDate is not present");
+        }
         if (fromDate.isAfter(LocalDate.now())) {
             throw new AwardingPointsException("fromDate cannot be in the future");
         }
         return ResponseEntity.ok(spendingsService.getAwardingPoints(fromDate));
     }
 
-    @ExceptionHandler({AwardingPointsException.class})
+    @ExceptionHandler({AwardingPointsException.class, Exception.class})
     public ResponseEntity<String> exceptionHandler(Exception ex) {
         log.error(ex.getLocalizedMessage());
         return ResponseEntity.badRequest().body(ex.getLocalizedMessage());

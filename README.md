@@ -72,6 +72,86 @@ docker run -p 8080:8080 myorg/myapp
 ### mvn test
 In the root project folder, run "mvn clean test". This will run all the unit tests.
 
+### You can run a single test method
+#### AwardingPointsControllerTest
+
+getAwardingPointsTest:
+```
+mvn test -Dtest="AwardingPointsControllerTest#getAwardingPointsTest"
+...
+[INFO] Running org.retailer.demo.controller.AwardingPointsControllerTest
+16:23:35.004 [main] INFO org.retailer.demo.controller.AwardingPointsControllerTest -- Response object: <200 OK OK,[],[]>
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.66 s - in org.retailer.demo.controller.AwardingPointsControllerTest
+
+```
+
+getAwardingPointsInvalidaDateTest:
+```
+mvn test -Dtest="AwardingPointsControllerTest#getAwardingPointsInvalidaDateTest"
+...
+[INFO] Running org.retailer.demo.controller.AwardingPointsControllerTest
+16:31:02.836 [main] INFO org.retailer.demo.controller.AwardingPointsControllerTest -- Exception message: Required request parameter 'fromDate' for method parameter type LocalDate is not present
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.647 s - in org.retailer.demo.controller.AwardingPointsControllerTest
+
+```
+
+getAwardingPointsExceptionDateInFutureTest:
+```
+mvn test -Dtest="AwardingPointsControllerTest#getAwardingPointsExceptionDateInFutureTest"
+...
+[INFO] Running org.retailer.demo.controller.AwardingPointsControllerTest
+16:31:02.836 [main] INFO org.retailer.demo.controller.AwardingPointsControllerTest -- Exception message: Required request parameter 'fromDate' for method parameter type LocalDate is not present
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.647 s - in org.retailer.demo.controller.AwardingPointsControllerTest
+
+```
+
+#### SpendingsServiceTest
+
+getAwardingPointsTest:
+```
+mvn test -Dtest="SpendingsServiceTest#getAwardingPointsTest"
+...
+[INFO] Running org.retailer.demo.controller.AwardingPointsControllerTest
+16:31:02.836 [main] INFO org.retailer.demo.controller.AwardingPointsControllerTest -- Exception message: Required request parameter 'fromDate' for method parameter type LocalDate is not present
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.647 s - in org.retailer.demo.controller.AwardingPointsControllerTest
+
+```
+
+getAwardingPointsTest:
+```
+mvn test -Dtest="SpendingsServiceTest#getAwardingPointsTest"
+...
+[INFO] Running org.retailer.demo.service.SpendingsServiceTest
+16:33:42.926 [main] INFO org.retailer.demo.service.SpendingsServiceTest -- customer name: John Doe
+16:33:42.930 [main] INFO org.retailer.demo.service.SpendingsServiceTest -- number of months searched (3): 3
+16:33:42.930 [main] INFO org.retailer.demo.service.SpendingsServiceTest -- Earned points fisrt month: 30
+16:33:42.930 [main] INFO org.retailer.demo.service.SpendingsServiceTest -- Earned points second month: 100
+16:33:42.931 [main] INFO org.retailer.demo.service.SpendingsServiceTest -- Earned points third month: 280
+16:33:42.931 [main] INFO org.retailer.demo.service.SpendingsServiceTest -- Earned points total: 410
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.731 s - in org.retailer.demo.service.SpendingsServiceTest
+
+```
+
+getAwardingPointsTest:
+```
+mvn test -Dtest="SpendingsServiceTest#getAwardingPointsNoCustomersTest"
+...
+[INFO] Running org.retailer.demo.service.SpendingsServiceTest
+16:35:24.985 [main] INFO org.retailer.demo.service.SpendingsServiceTest -- Exception message: No customers found
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.737 s - in org.retailer.demo.service.SpendingsServiceTest
+
+```
+
+getAwardingPointsTest:
+```
+mvn test -Dtest="SpendingsServiceTest#getAwardingPointsMonthsExceptionTest"
+...
+[INFO] Running org.retailer.demo.service.SpendingsServiceTest
+16:36:04.900 [main] INFO org.retailer.demo.service.SpendingsServiceTest -- Exception message: monthsToSearch env value must be greater than 0
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.747 s - in org.retailer.demo.service.SpendingsServiceTest
+
+```
+
 ### Surefire Report
 You can execute the next command to generate the surefire report.
 ```
