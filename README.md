@@ -72,10 +72,21 @@ docker run -p 8080:8080 myorg/myapp
 ### mvn test
 In the root project folder, run "mvn clean test". This will run all the unit tests.
 
-### You can run a single test method
+### You can run all test in a single class with this command:
+for AwardingPointsControllerTest:
+```
+ mvn test -Dtest="AwardingPointsControllerTest"
+```
+
+or for  SpendingsServiceTest:
+```
+mvn test -Dtest="SpendingsServiceTest"
+```
+
+### You can run a single test method in a class
 #### AwardingPointsControllerTest
 
-getAwardingPointsTest:
+getAwardingPointsTest (test de general 200 response):
 ```
 mvn test -Dtest="AwardingPointsControllerTest#getAwardingPointsTest"
 ...
@@ -85,7 +96,7 @@ mvn test -Dtest="AwardingPointsControllerTest#getAwardingPointsTest"
 
 ```
 
-getAwardingPointsInvalidaDateTest:
+getAwardingPointsInvalidaDateTest (exception when the date parameter is invalid):
 ```
 mvn test -Dtest="AwardingPointsControllerTest#getAwardingPointsInvalidaDateTest"
 ...
@@ -95,9 +106,19 @@ mvn test -Dtest="AwardingPointsControllerTest#getAwardingPointsInvalidaDateTest"
 
 ```
 
-getAwardingPointsExceptionDateInFutureTest:
+getAwardingPointsExceptionDateInFutureTest (exception when the date to search is in future):
 ```
 mvn test -Dtest="AwardingPointsControllerTest#getAwardingPointsExceptionDateInFutureTest"
+...
+[INFO] Running org.retailer.demo.controller.AwardingPointsControllerTest
+16:31:02.836 [main] INFO org.retailer.demo.controller.AwardingPointsControllerTest -- Exception message: fromDate cannot be in the future
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.647 s - in org.retailer.demo.controller.AwardingPointsControllerTest
+
+```
+
+exceptionHandlerDateTest (test exception handler 400 response)
+```
+mvn test -Dtest="AwardingPointsControllerTest#exceptionHandlerDateTest"
 ...
 [INFO] Running org.retailer.demo.controller.AwardingPointsControllerTest
 16:31:02.836 [main] INFO org.retailer.demo.controller.AwardingPointsControllerTest -- Exception message: Required request parameter 'fromDate' for method parameter type LocalDate is not present
@@ -107,17 +128,7 @@ mvn test -Dtest="AwardingPointsControllerTest#getAwardingPointsExceptionDateInFu
 
 #### SpendingsServiceTest
 
-getAwardingPointsTest:
-```
-mvn test -Dtest="SpendingsServiceTest#getAwardingPointsTest"
-...
-[INFO] Running org.retailer.demo.controller.AwardingPointsControllerTest
-16:31:02.836 [main] INFO org.retailer.demo.controller.AwardingPointsControllerTest -- Exception message: Required request parameter 'fromDate' for method parameter type LocalDate is not present
-[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.647 s - in org.retailer.demo.controller.AwardingPointsControllerTest
-
-```
-
-getAwardingPointsTest:
+getAwardingPointsTest (test sum of monthly and three months total):
 ```
 mvn test -Dtest="SpendingsServiceTest#getAwardingPointsTest"
 ...
@@ -132,7 +143,7 @@ mvn test -Dtest="SpendingsServiceTest#getAwardingPointsTest"
 
 ```
 
-getAwardingPointsTest:
+getAwardingPointsTest (exception when no customer in database):
 ```
 mvn test -Dtest="SpendingsServiceTest#getAwardingPointsNoCustomersTest"
 ...
@@ -142,7 +153,7 @@ mvn test -Dtest="SpendingsServiceTest#getAwardingPointsNoCustomersTest"
 
 ```
 
-getAwardingPointsTest:
+getAwardingPointsTest (exception months to search env value is less than 1):
 ```
 mvn test -Dtest="SpendingsServiceTest#getAwardingPointsMonthsExceptionTest"
 ...
