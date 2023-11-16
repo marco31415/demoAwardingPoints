@@ -86,7 +86,7 @@ mvn test -Dtest="SpendingsServiceTest"
 ### You can run a single test method in a class
 #### AwardingPointsControllerTest
 
-getAwardingPointsTest (test de general 200 response):
+getAwardingPointsTest (test the general 200 response):
 ```
 mvn test -Dtest="AwardingPointsControllerTest#getAwardingPointsTest"
 ...
