@@ -4,7 +4,7 @@
 - [java >= 17] (http://www.oracle.com/technetwork/java/javase/downloads/index.html)
 - [maven >= 3.3] (https://maven.apache.org/download.cgi)
 
-# How to develop locally on my laptop?
+# How to develop locally on my laptop ?
 ----------------------
 
 Reference your home directory as HOME_DIR below since Java is platform independent and does not recognize Unix tilde *~* shortcut.
